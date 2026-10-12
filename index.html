@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>「十四五」发展变革回眸 「十五五」远景蓝图展望 · 宋如一</title>
+<style>
+  :root{
+    --red:#c8352c; --red-deep:#8f1f1a;
+    --gold:#e6b85c; --gold-soft:#f0d29a;
+    --ink:#f4e9d6; --ink-dim:#cdbb9f;
+    --card:rgba(255,240,220,.06);
+    --line:rgba(230,184,92,.35);
+    --serif:"Songti SC","STSong","Noto Serif CJK SC","SimSun",serif;
+    --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:var(--sans);color:var(--ink)}
+  body{display:flex;align-items:center;justify-content:center;position:relative}
+
+  .atmosphere{position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(900px 600px at 78% -10%, rgba(200,53,44,.34), transparent 60%),
+      radial-gradient(800px 600px at 8% 110%, rgba(230,184,92,.14), transparent 60%),
+      radial-gradient(700px 500px at 50% 120%, rgba(143,31,26,.25), transparent 65%),
+      linear-gradient(160deg,#1c0d10 0%,#140a0d 55%,#0d0608 100%);}
+  .atmosphere::after{content:"";position:absolute;inset:0;opacity:.5;
+    background-image:linear-gradient(rgba(230,184,92,.045) 1px,transparent 1px),
+                     linear-gradient(90deg,rgba(230,184,92,.045) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(circle at 50% 45%,#000 30%,transparent 85%);}
+
+  #viewport{position:relative;z-index:1}
+  #stage{width:1280px;height:720px;position:relative;transform-origin:center center;
+    border-radius:10px;overflow:hidden;
+    box-shadow:0 30px 90px rgba(0,0,0,.65),0 0 0 1px rgba(230,184,92,.18);}
+  .slide{position:absolute;inset:0;display:none;padding:58px 76px 56px;
+    background:linear-gradient(155deg,rgba(48,20,24,.55),rgba(18,9,12,.85));}
+  .slide.active{display:block}
+  .cover.active,.quote-slide.active,.end-slide.active{display:flex}
+  .slide.active .anim{animation:rise .8s cubic-bezier(.22,.8,.3,1) both;animation-delay:var(--d,0s)}
+  .slide.rev.active .anim{animation:riseL .8s cubic-bezier(.22,.8,.3,1) both;animation-delay:var(--d,0s)}
+  @keyframes rise{from{opacity:0;transform:translateY(28px) translateX(12px)}to{opacity:1;transform:none}}
+  @keyframes riseL{from{opacity:0;transform:translateY(28px) translateX(-12px)}to{opacity:1;transform:none}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes pulse{0%,100%{opacity:.7}50%{opacity:1}}
+  @keyframes pop{0%{opacity:0;transform:scale(.4) translateY(24px)}70%{transform:scale(1.08) translateY(-3px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+  @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+  @keyframes dash{to{stroke-dashoffset:-1000}}
+
+  .kicker{display:inline-flex;align-items:center;gap:12px;font-size:18px;letter-spacing:4px;
+    color:var(--gold);font-weight:600}
+  .kicker::before{content:"";width:34px;height:2px;background:var(--gold);display:inline-block}
+  .h-title{font-family:var(--serif);font-size:42px;font-weight:700;line-height:1.25;margin-top:12px;letter-spacing:2px}
+  .h-sub{margin-top:10px;font-size:20px;color:var(--ink-dim);letter-spacing:1px}
+
+  #progress{position:absolute;top:0;left:0;height:4px;width:0;z-index:50;
+    background:linear-gradient(90deg,var(--red),var(--gold));
+    box-shadow:0 0 12px rgba(230,184,92,.7);transition:width .45s ease}
+  #pageno{position:absolute;left:30px;bottom:20px;z-index:50;font-size:15px;letter-spacing:3px;color:var(--ink-dim)}
+  #brand{position:absolute;right:30px;bottom:20px;z-index:50;font-size:14px;letter-spacing:3px;color:rgba(230,184,92,.7)}
+  .nav{position:absolute;bottom:16px;z-index:60;display:flex;gap:12px}
+  #navPrev{right:112px}#navNext{right:34px}
+  .nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);
+    background:rgba(20,10,13,.55);color:var(--gold-soft);font-size:20px;cursor:pointer;
+    backdrop-filter:blur(6px);transition:.25s;line-height:1}
+  .nav button:hover:not(:disabled){background:var(--red);border-color:var(--red);color:#fff;transform:translateY(-2px)}
+  .nav button:disabled{opacity:.25;cursor:default}
+  #hint{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);z-index:50;
+    font-size:13px;letter-spacing:2px;color:rgba(205,187,159,.55);transition:opacity .6s}
+
+  /* ============ S1 封面 ============ */
+  .cover{flex-direction:column;justify-content:center;align-items:flex-start;padding:64px 80px 72px;
+    background:
+      radial-gradient(700px 420px at 85% 15%,rgba(200,53,44,.4),transparent 60%),
+      linear-gradient(150deg,#2c1214 0%,#180b0e 60%,#100709 100%) !important}
+  .cover .seal{position:absolute;right:96px;top:92px;width:118px;height:118px;border:3px solid var(--red);
+    border-radius:14px;display:flex;align-items:center;justify-content:center;flex-direction:column;
+    color:#f6d7c9;font-family:var(--serif);background:rgba(200,53,44,.12);transform:rotate(6deg);
+    box-shadow:0 0 0 6px rgba(200,53,44,.08)}
+  .cover .seal b{font-size:40px;letter-spacing:4px}.cover .seal span{font-size:15px;letter-spacing:8px;margin-top:4px}
+  .cover .ribbon{font-size:19px;letter-spacing:5px;color:var(--gold);font-weight:600;
+    border:1px solid var(--line);padding:9px 22px;border-radius:999px;background:rgba(230,184,92,.07)}
+  .cover h1{font-family:var(--serif);font-size:57px;font-weight:900;letter-spacing:5px;margin:30px 0 2px;line-height:1.32;
+    background:linear-gradient(180deg,#fdf0d8,#e6b85c 70%,#d19a3e);-webkit-background-clip:text;background-clip:text;color:transparent;
+    text-shadow:0 6px 30px rgba(230,184,92,.18)}
+  .cover h2{font-size:28px;font-weight:500;letter-spacing:4px;color:var(--ink);margin-top:18px}
+  .cover .who{margin-top:30px;font-size:19px;letter-spacing:3px;color:var(--ink-dim);display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .cover .who b{color:var(--gold-soft);font-weight:600}
+  .cover .divider{width:220px;height:1px;background:linear-gradient(90deg,var(--gold),transparent);margin:24px 0 16px}
+  .cover .route{font-size:19px;letter-spacing:3px;color:var(--gold-soft)}
+  .cover .route .big{font-size:24px;color:#fff;font-weight:700;margin:0 5px}
+  .cover .mountains{position:absolute;left:0;right:0;bottom:0;height:150px;opacity:.5}
+
+  /* ============ S2 目录 ============ */
+  .toc-wrap{margin-top:22px;display:grid;grid-template-columns:300px 1fr;gap:56px;height:540px}
+  .toc-left{display:flex;flex-direction:column;justify-content:center;border-right:1px solid rgba(230,184,92,.25);padding-right:40px}
+  .toc-left .big{font-family:var(--serif);font-size:96px;font-weight:900;letter-spacing:14px;line-height:1.1;
+    background:linear-gradient(180deg,#fdf0d8,#d19a3e);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .toc-left .en{font-size:17px;letter-spacing:8px;color:var(--ink-dim);margin-top:10px}
+  .toc-left .rule{width:64px;height:3px;background:var(--red);margin:22px 0}
+  .toc-left p{font-size:17px;line-height:1.9;color:var(--ink-dim);letter-spacing:1px}
+  .toc-list{display:flex;flex-direction:column;justify-content:center;gap:4px}
+  .toc-group{font-size:13.5px;letter-spacing:5px;color:rgba(230,184,92,.75);margin:9px 0 3px 4px}
+  .toc-group:first-child{margin-top:0}
+  .toc-item{display:flex;align-items:center;gap:20px;padding:7px 18px;border-radius:12px;transition:.25s}
+  .toc-item:hover{background:rgba(230,184,92,.09)}
+  .toc-item .no{font-family:var(--serif);font-size:24px;font-weight:700;color:var(--gold);width:40px;flex:none}
+  .toc-item .nm{font-family:var(--serif);font-size:24px;letter-spacing:3px}
+  .toc-item.home .nm{color:#ffd0c8}
+  .toc-item .desc{margin-left:auto;font-size:15px;letter-spacing:2px;color:var(--ink-dim)}
+  .toc-item .star{color:var(--red);font-size:16px;margin-left:10px}
+
+  /* ============ S3 开篇 · 六城浮现 ============ */
+  .open-top{text-align:center;margin-top:6px}
+  .open-top .lead{font-family:var(--serif);font-size:38px;font-weight:700;letter-spacing:3px;line-height:1.5}
+  .open-top .lead em{font-style:normal;color:var(--gold)}
+  .open-tags{display:flex;justify-content:center;gap:14px;margin-top:16px}
+  .open-tags span{font-size:17px;letter-spacing:2px;padding:7px 18px;border-radius:999px;border:1px solid var(--line);background:var(--card)}
+  .open-tags b{color:var(--gold)}
+  .lat-stage{position:relative;margin:52px 30px 0;height:292px}
+  .lat-line{position:absolute;left:0;right:0;top:150px;height:3px;border-radius:2px;
+    background:linear-gradient(90deg,#3fb6c6,#e6b85c,#ff6a5e);transform-origin:left;
+    animation:grow 1.2s .2s cubic-bezier(.22,.8,.3,1) both}
+  .lat-line::before{content:"20°N";position:absolute;left:-4px;top:14px;font-size:14px;color:var(--ink-dim);letter-spacing:2px}
+  .lat-line::after{content:"40°N";position:absolute;right:-4px;top:14px;font-size:14px;color:var(--ink-dim);letter-spacing:2px}
+  .stops{position:relative;height:100%;display:flex}
+  .stop{flex:1;position:relative;display:flex;flex-direction:column;align-items:center}
+  .stop .dot{width:18px;height:18px;border-radius:50%;background:var(--gold);border:3px solid #fff8e8;
+    margin-top:142px;box-shadow:0 0 18px rgba(230,184,92,.8);position:relative;z-index:2;
+    opacity:0;animation:pop .6s cubic-bezier(.22,.8,.3,1) forwards;animation-delay:var(--d)}
+  .stop.home .dot{background:#ff6a5e;box-shadow:0 0 22px rgba(255,106,94,.9);width:22px;height:22px;margin-top:140px}
+  .stop-card{position:absolute;padding:15px 12px 13px;border-radius:14px;text-align:center;width:150px;
+    border:1px solid rgba(230,184,92,.4);background:linear-gradient(160deg,rgba(60,26,30,.92),rgba(28,13,16,.92));
+    box-shadow:0 12px 30px rgba(0,0,0,.4);
+    opacity:0;animation:pop .6s cubic-bezier(.22,.8,.3,1) forwards;animation-delay:calc(var(--d) + .12s)}
+  .stop:nth-child(odd) .stop-card{top:0}
+  .stop:nth-child(even) .stop-card{top:178px}
+  .stop.home .stop-card{border-color:#ff6a5e;box-shadow:0 0 34px rgba(255,106,94,.35),0 12px 30px rgba(0,0,0,.4)}
+  .stop-card .glyph{font-size:34px;line-height:1}
+  .stop-card .cn{font-family:var(--serif);font-size:25px;font-weight:700;letter-spacing:2px;margin-top:7px}
+  .stop-card .lat{font-size:13.5px;color:var(--ink-dim);letter-spacing:1px;margin-top:3px}
+  .stop.home .stop-card .cn{color:#ffd0c8}
+  .stop-card .home-tag{display:inline-block;margin-top:6px;font-size:12px;letter-spacing:2px;color:#fff;
+    background:var(--red);border-radius:999px;padding:2px 10px}
+  .open-note{margin-top:12px;text-align:center;font-size:18px;letter-spacing:2px;color:var(--ink-dim)}
+  .open-note b{color:var(--gold-soft)}
+
+  /* ============ S4 双五规划 ============ */
+  .goal{margin:18px auto 0;max-width:1080px;text-align:center;font-size:22px;letter-spacing:2px;line-height:1.8;
+    color:var(--gold-soft)}
+  .goal b{font-family:var(--serif);font-size:26px;color:#fff;letter-spacing:2px}
+  .plan-grid{margin-top:26px;display:grid;grid-template-columns:1fr 72px 1fr;align-items:stretch}
+  .plan{border-radius:16px;padding:26px 32px;position:relative;overflow:hidden}
+  .plan.p14{background:linear-gradient(150deg,rgba(120,40,36,.5),rgba(60,20,20,.35));border:1px solid rgba(200,53,44,.45)}
+  .plan.p15{background:linear-gradient(150deg,rgba(176,130,44,.28),rgba(80,55,15,.3));border:1px solid rgba(230,184,92,.5)}
+  .plan .yr{font-size:17px;letter-spacing:4px;color:var(--ink-dim)}
+  .plan h3{font-family:var(--serif);font-size:36px;letter-spacing:5px;margin:5px 0 2px}
+  .plan.p15 h3{color:var(--gold)}
+  .plan .tag{display:inline-block;margin:10px 0 14px;font-size:16px;letter-spacing:2px;padding:5px 14px;border-radius:6px}
+  .plan.p14 .tag{background:rgba(200,53,44,.3);color:#ffd9d4}
+  .plan.p15 .tag{background:rgba(230,184,92,.22);color:var(--gold-soft)}
+  .plan p{font-size:19px;line-height:1.8;letter-spacing:1px;color:var(--ink)}
+  .baton{display:flex;align-items:center;justify-content:center;position:relative}
+  .baton-line{position:absolute;top:50%;left:0;right:0;height:2px;background:repeating-linear-gradient(90deg,var(--gold) 0 14px,transparent 14px 26px)}
+  .baton-icon{position:relative;width:54px;height:54px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;font-size:25px;
+    box-shadow:0 0 24px rgba(230,184,92,.65)}
+  .plan-foot{margin-top:20px;text-align:center;font-size:20px;letter-spacing:3px;color:var(--gold-soft)}
+  .sticker{position:absolute;right:30px;bottom:24px;font-size:15px;color:rgba(205,187,159,.75);
+    border:1px dashed rgba(230,184,92,.4);border-radius:999px;padding:7px 16px;letter-spacing:1px}
+
+  /* ============ S5 背景成绩 ============ */
+  .s4-grid{margin-top:28px;display:grid;grid-template-columns:1fr 340px 1fr;gap:28px;align-items:stretch}
+  .s4-card{border-radius:16px;padding:26px 30px;border:1px solid rgba(230,184,92,.22);background:var(--card)}
+  .s4-card h3{font-family:var(--serif);font-size:26px;letter-spacing:4px;color:var(--gold);margin-bottom:16px}
+  .s4-card li{list-style:none;font-size:18.5px;line-height:1.7;margin-bottom:14px;padding-left:26px;position:relative;letter-spacing:1px}
+  .s4-card li::before{content:"";position:absolute;left:0;top:10px;width:10px;height:10px;border-radius:2px;background:var(--red);transform:rotate(45deg)}
+  .s4-card li small{display:block;color:var(--ink-dim);font-size:16px;margin-top:2px}
+  .s4-center{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center}
+  .ring{width:238px;height:238px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    background:radial-gradient(circle at 50% 38%,rgba(200,53,44,.5),rgba(143,31,26,.18) 68%,transparent 72%);
+    border:2px solid rgba(230,184,92,.55);box-shadow:0 0 50px rgba(200,53,44,.35),inset 0 0 50px rgba(230,184,92,.15)}
+  .ring .n{font-family:var(--serif);font-size:92px;font-weight:900;color:var(--gold);line-height:1}
+  .ring .t{font-size:17px;letter-spacing:3px;margin-top:6px}
+  .s4-center .areas{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+  .s4-center .areas span{font-size:16px;letter-spacing:2px;padding:6px 14px;border-radius:8px;
+    background:rgba(230,184,92,.12);border:1px solid var(--line)}
+  .s4-foot{margin-top:22px;text-align:center;font-size:21px;letter-spacing:6px;color:#fff}
+  .s4-foot b{color:var(--gold)}
+
+  /* ============ 城市数据页 ============ */
+  .city{--accent:var(--gold);padding:50px 72px 46px}
+  .city .kicker{color:var(--accent)}
+  .city .kicker::before{background:var(--accent)}
+  .city-wrap{margin-top:16px;display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:center;
+    height:calc(100% - 70px)}
+  .city-id .watermark{font-family:var(--serif);font-size:172px;font-weight:900;line-height:1;
+    color:transparent;-webkit-text-stroke:2px var(--accent);opacity:.5;letter-spacing:6px}
+  .city-id .cname{font-family:var(--serif);font-size:66px;font-weight:900;letter-spacing:8px;margin-top:-40px;position:relative}
+  .city-id .cname small{display:block;font-family:var(--sans);font-size:16px;letter-spacing:5px;color:var(--ink-dim);margin-top:8px;font-weight:400}
+  .city-id .accentbar{width:80px;height:5px;border-radius:3px;background:var(--accent);margin-top:18px;
+    box-shadow:0 0 18px var(--accent)}
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:12px}
+  .chips span{font-size:16px;letter-spacing:2px;padding:6px 15px;border-radius:999px;
+    border:1px solid color-mix(in srgb,var(--accent) 60%,transparent);
+    background:color-mix(in srgb,var(--accent) 14%,transparent);color:#fff}
+  .city-main{font-family:var(--serif);font-size:26px;line-height:1.55;letter-spacing:1.5px;font-weight:700}
+  .city-main em{font-style:normal;color:var(--accent)}
+  .data-row{margin:16px 0 14px;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .dcard{border-radius:12px;padding:13px 14px 11px;position:relative;overflow:hidden;
+    background:linear-gradient(155deg,color-mix(in srgb,var(--accent) 22%,rgba(20,10,13,.6)),rgba(20,10,13,.55));
+    border:1px solid color-mix(in srgb,var(--accent) 45%,transparent)}
+  .dcard::before{content:"";position:absolute;left:0;top:0;right:0;height:2px;background:var(--accent)}
+  .dnum{font-family:var(--serif);font-size:29px;font-weight:900;color:#fff;line-height:1.15;letter-spacing:1px;white-space:nowrap}
+  .dnum span{font-size:15px;font-weight:600;color:var(--gold-soft);margin-left:3px;letter-spacing:1px}
+  .dlab{font-size:14.5px;color:var(--ink);margin-top:5px;letter-spacing:1px;line-height:1.35}
+  .ddelta{font-size:12.5px;color:var(--ink-dim);margin-top:4px;line-height:1.4;letter-spacing:.5px}
+  .city-points{display:flex;flex-direction:column;gap:9px}
+  .city-points div{display:flex;align-items:center;gap:12px;font-size:17px;letter-spacing:.5px;color:var(--ink)}
+  .city-points b{flex:none;width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;
+    font-size:14.5px;background:color-mix(in srgb,var(--accent) 25%,transparent);
+    border:1px solid color-mix(in srgb,var(--accent) 60%,transparent);color:#fff}
+  .city-glyph{position:absolute;right:60px;bottom:56px;font-size:180px;opacity:.1;animation:floaty 6s ease-in-out infinite;line-height:1;user-select:none}
+  .src{position:absolute;left:72px;right:72px;bottom:20px;font-size:12.5px;letter-spacing:.5px;color:rgba(205,187,159,.62);
+    border-top:1px solid rgba(230,184,92,.15);padding-top:7px}
+  .src b{color:var(--gold-soft);font-weight:600}
+
+  /* 海口：十四五 / 十五五 两段 */
+  .city-main.era-line{font-size:20.5px;line-height:1.68;font-weight:400;font-family:var(--sans);margin-top:14px}
+  .city-main.era-line em{font-family:var(--serif);font-weight:700}
+  .city-main-15{color:var(--ink)}
+  .city-main-15 em{color:var(--gold) !important}
+  .era{display:inline-block;font-family:var(--sans);font-size:15px;letter-spacing:2px;font-weight:700;
+    padding:3px 13px;border-radius:7px;margin-right:11px;vertical-align:2px}
+  .era14{background:rgba(200,53,44,.32);color:#ffd9d4;border:1px solid rgba(200,53,44,.65)}
+  .era15{background:rgba(230,184,92,.2);color:var(--gold);border:1px solid rgba(230,184,92,.55)}
+
+  /* 重庆：大众印象 */
+  .impress{display:flex;align-items:center;flex-wrap:wrap;gap:9px;margin:0 0 13px}
+  .impress .im-lab{font-size:14.5px;letter-spacing:2px;color:#ffd0c8;background:rgba(255,107,74,.22);
+    border:1px solid rgba(255,107,74,.65);padding:6px 14px;border-radius:999px;font-weight:700}
+  .impress span.it{font-size:16.5px;letter-spacing:1px;padding:6px 15px;border-radius:999px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22)}
+  .impress span.it small{color:var(--ink-dim);font-size:14px;margin-left:4px}
+
+  /* 广州：个人体验-不足-十五五目标 */
+  .gz-timeline{display:flex;flex-direction:column;gap:16px;height:100%;justify-content:center}
+  .gz-card{border-radius:16px;padding:21px 28px 20px 30px;position:relative;overflow:hidden}
+  .gz-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--gz,#e6b85c)}
+  .gz-card.gz-good{--gz:#5aa66e;border:1px solid rgba(90,166,110,.45);
+    background:linear-gradient(150deg,rgba(90,166,110,.17),rgba(20,10,13,.6))}
+  .gz-card.gz-bad{--gz:#e05a4e;border:1px solid rgba(224,90,78,.5);
+    background:linear-gradient(150deg,rgba(224,90,78,.17),rgba(20,10,13,.6))}
+  .gz-card.gz-plan{--gz:#6fb7e8;border:1px solid rgba(111,183,232,.5);
+    background:linear-gradient(150deg,rgba(111,183,232,.17),rgba(20,10,13,.6))}
+  .gz-tag{font-size:16px;letter-spacing:2px;font-weight:700;color:var(--gz);margin-bottom:9px}
+  .gz-card.gz-bad .gz-tag{color:#ff9d92}
+  .gz-card p{font-size:19px;line-height:1.7;letter-spacing:.5px;color:var(--ink)}
+  .gz-card p b{color:#fff}
+
+  /* 庄河：教育五字 */
+  .fiveword{font-family:var(--serif);font-size:29px;font-weight:900;letter-spacing:5px;color:#fff;
+    margin-top:6px;padding-left:2px;white-space:nowrap}
+
+  /* ============ 庄河名片 ============ */
+  .zh-hero{display:grid;grid-template-columns:1fr 380px;gap:44px;margin-top:26px;align-items:stretch;height:486px}
+  .zh-left{display:flex;flex-direction:column;justify-content:center}
+  .zh-left .bigline{font-family:var(--serif);font-size:54px;font-weight:900;letter-spacing:8px}
+  .zh-left .bigline small{font-size:19px;letter-spacing:5px;color:var(--gold);display:block;margin-bottom:8px;font-weight:400}
+  .zh-left .loc{font-size:20px;letter-spacing:2px;color:var(--ink-dim);margin-top:12px;line-height:1.7}
+  .zh-left .loc b{color:var(--gold-soft)}
+  .jars{margin-top:22px}
+  .jars .jt{font-size:18.5px;letter-spacing:2px;color:var(--ink);margin-bottom:12px}
+  .jar-list{display:flex;flex-wrap:wrap;gap:11px}
+  .jar-list span{font-size:17.5px;letter-spacing:1px;padding:9px 18px;border-radius:12px;
+    background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.18)}
+  .jar-list span.fav{background:linear-gradient(130deg,rgba(230,184,92,.35),rgba(200,53,44,.3));
+    border-color:var(--gold);color:#fff3d6;font-weight:700;
+    box-shadow:0 0 26px rgba(230,184,92,.3);transform:rotate(-2deg)}
+  .zh-mini{margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .zh-mini .m{border:1px solid rgba(90,166,110,.4);border-radius:12px;padding:13px 16px;background:rgba(90,166,110,.1)}
+  .zh-mini .m b{font-family:var(--serif);font-size:24px;color:#bfe6c9;display:block}
+  .zh-mini .m span{font-size:13.5px;color:var(--ink-dim);letter-spacing:1px}
+  .zh-photo{border-radius:18px;border:1px solid var(--line);
+    position:relative;overflow:hidden;padding:0;display:flex}
+  .zh-photo img{width:100%;height:100%;object-fit:cover;display:block}
+  .photo-cap{position:absolute;left:0;right:0;bottom:0;padding:30px 22px 15px;text-align:right;
+    font-size:16px;letter-spacing:2px;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.8);
+    background:linear-gradient(transparent,rgba(0,0,0,.72))}
+  .zh-photo .wave{font-size:92px;line-height:1;animation:floaty 5s ease-in-out infinite}
+  .zh-photo .berries{font-size:32px;letter-spacing:14px}
+  .zh-photo p{font-family:var(--serif);font-size:24px;letter-spacing:3px;line-height:1.6}
+  .zh-photo .age{position:absolute;top:16px;right:16px;font-size:14px;letter-spacing:2px;color:var(--gold);
+    border:1px solid var(--line);border-radius:999px;padding:5px 14px}
+
+  /* ============ 庄河四板块 ============ */
+  .quad{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  .qcard{border-radius:16px;padding:23px 26px;background:var(--card);border:1px solid rgba(230,184,92,.2);
+    display:flex;gap:18px;align-items:flex-start;position:relative;overflow:hidden}
+  .qcard::after{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--qc,var(--gold))}
+  .qcard .ico{font-size:40px;flex:none;line-height:1.1}
+  .qcard h4{font-family:var(--serif);font-size:24px;letter-spacing:3px;margin-bottom:8px}
+  .qcard h4 small{font-family:var(--sans);font-size:14px;letter-spacing:2px;color:var(--qc,var(--gold));margin-left:10px;font-weight:500}
+  .qcard p{font-size:16.5px;line-height:1.7;color:var(--ink-dim)}
+  .qcard p b{color:var(--ink)}
+  .qcard .wishline{margin-top:7px;font-size:16px;line-height:1.7;color:#ffe9c9}
+  .qcard .wishline b{color:#ffd07a}
+
+  /* ============ 结语 ============ */
+  .quote-slide{flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:76px 104px !important;
+    background:
+      radial-gradient(800px 500px at 50% 0%,rgba(200,53,44,.35),transparent 65%),
+      linear-gradient(170deg,#2a1214,#120809 70%) !important}
+  .q-source{font-size:20px;letter-spacing:3px;color:var(--gold);margin-bottom:30px}
+  .q-mark{font-family:var(--serif);font-size:110px;color:var(--gold);line-height:.6;opacity:.8}
+  .q-text{font-family:var(--serif);font-size:42px;font-weight:700;line-height:1.7;letter-spacing:4px;margin:24px 0 30px;max-width:1000px}
+  .q-text em{font-style:normal;color:var(--gold)}
+  .q-sig{font-size:22px;letter-spacing:4px;color:var(--ink-dim)}
+  .q-sig b{color:var(--gold-soft);font-weight:600}
+  .end-thanks{margin-top:38px;font-size:19px;letter-spacing:5px;color:var(--gold-soft)}
+  .q-rule{width:120px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-bottom:26px}
+
+  /* ============ 谢谢 ============ */
+  .end-slide{flex-direction:column;justify-content:center;align-items:center;text-align:center !important;
+    background:
+      radial-gradient(700px 460px at 50% 40%,rgba(200,53,44,.4),transparent 62%),
+      linear-gradient(160deg,#2c1214,#120709 75%) !important}
+  .end-slide .t1{font-family:var(--serif);font-size:112px;font-weight:900;letter-spacing:20px;
+    background:linear-gradient(180deg,#fdf0d8,#e6b85c 75%,#cf9739);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .end-slide .t2{font-size:23px;letter-spacing:6px;color:var(--ink-dim);margin-top:16px}
+  .end-slide .t3{margin-top:30px;font-size:20px;letter-spacing:4px;color:var(--gold-soft)}
+  .end-slide .stars{font-size:22px;letter-spacing:18px;margin-bottom:8px}
+
+  /* ============ 桌宠 ============ */
+  #pet{position:fixed;left:18px;bottom:46px;z-index:90;width:84px;cursor:pointer;user-select:none}
+  .pet-shadow{width:58px;height:9px;margin:0 auto;border-radius:50%;
+    background:rgba(0,0,0,.5);filter:blur(2px);animation:petshadow 3s ease-in-out infinite}
+  .pet-body{position:relative;width:78px;height:66px;margin:0 auto 0;
+    border-radius:20px 20px 16px 16px;
+    background:linear-gradient(160deg,#3a1a20,#221014 70%);
+    border:1.5px solid rgba(230,184,92,.65);
+    box-shadow:0 10px 26px rgba(0,0,0,.55),inset 0 2px 10px rgba(230,184,92,.18);
+    animation:petbob 3.2s ease-in-out infinite}
+  @keyframes petbob{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes petshadow{0%,100%{transform:scaleX(1);opacity:.55}50%{transform:scaleX(.82);opacity:.35}}
+  #pet.speaking .pet-body{animation:pettalk .26s ease-in-out infinite}
+  @keyframes pettalk{0%,100%{transform:translateY(0) rotate(-1.2deg)}50%{transform:translateY(-4px) rotate(1.2deg)}}
+  .pet-antenna{position:absolute;left:50%;top:-13px;width:2px;height:13px;margin-left:-1px;background:rgba(230,184,92,.8)}
+  .pet-antenna::before{content:"";position:absolute;left:50%;top:-8px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;
+    background:#ff6a5e;box-shadow:0 0 10px rgba(255,106,94,.9);animation:petled 1.6s ease-in-out infinite}
+  #pet.speaking .pet-antenna::before{background:var(--gold);box-shadow:0 0 14px rgba(230,184,92,1);animation-duration:.5s}
+  @keyframes petled{0%,100%{opacity:.55}50%{opacity:1}}
+  .pet-eye{position:absolute;top:20px;width:11px;height:11px;border-radius:50%;background:#f4e9d6;
+    box-shadow:0 0 8px rgba(244,233,214,.7);animation:petblink 4.5s infinite}
+  .pet-eye::after{content:"";position:absolute;left:2.5px;top:2px;width:5px;height:5px;border-radius:50%;background:#140a0d}
+  .pet-eye.l{left:18px}.pet-eye.r{right:18px}
+  @keyframes petblink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.08)}}
+  .pet-mouth{position:absolute;left:50%;bottom:12px;width:26px;height:12px;margin-left:-13px;
+    display:flex;align-items:flex-end;justify-content:center;gap:3px}
+  .pet-mouth i{width:3.5px;height:4px;border-radius:2px;background:var(--gold);transition:height .12s}
+  #pet.speaking .pet-mouth i{animation:peteq .3s ease-in-out infinite}
+  #pet.speaking .pet-mouth i:nth-child(2){animation-delay:.1s}
+  #pet.speaking .pet-mouth i:nth-child(3){animation-delay:.2s}
+  @keyframes peteq{0%,100%{height:4px}50%{height:12px}}
+  .pet-ear{position:absolute;top:-7px;width:15px;height:15px;border-radius:5px;
+    background:linear-gradient(160deg,#c8352c,#8f1f1a);border:1.5px solid rgba(230,184,92,.65)}
+  .pet-ear.l{left:8px;transform:rotate(-12deg)}.pet-ear.r{right:8px;transform:rotate(12deg)}
+  .pet-mute{position:absolute;right:-7px;top:-8px;width:24px;height:24px;border-radius:50%;
+    background:rgba(20,10,13,.85);border:1px solid var(--line);color:var(--gold);
+    font-size:12px;display:flex;align-items:center;justify-content:center;z-index:3;
+    cursor:pointer;line-height:1;padding:0}
+  .pet-mute:hover{background:var(--red);color:#fff}
+  .pet-bubble{position:absolute;left:92px;bottom:40px;width:max-content;max-width:300px;
+    padding:12px 17px;border-radius:14px;
+    background:linear-gradient(160deg,rgba(50,24,28,.97),rgba(26,12,15,.97));
+    border:1px solid rgba(230,184,92,.55);
+    box-shadow:0 12px 32px rgba(0,0,0,.5);
+    color:var(--ink);font-size:17px;line-height:1.55;letter-spacing:1px;
+    opacity:0;transform:translateY(10px) scale(.92);transform-origin:left bottom;
+    pointer-events:none;transition:.28s cubic-bezier(.22,.8,.3,1)}
+  .pet-bubble.show{opacity:1;transform:none}
+  .pet-bubble::after{content:"";position:absolute;left:-8px;bottom:16px;
+    border:8px solid transparent;border-right-color:rgba(230,184,92,.55);border-left:0;border-bottom:0}
+  .pet-bubble b{color:var(--gold)}
+  .pet-hint{position:absolute;left:0;right:0;top:-22px;text-align:center;font-size:11px;
+    letter-spacing:1px;color:rgba(205,187,159,.7);white-space:nowrap}
+
+  @media (max-width:900px){#hint{display:none}#pet{transform:scale(.82);transform-origin:left bottom}#pet .pet-bubble{left:80px;max-width:220px;font-size:15px}}
+</style>
+</head>
+<body>
+<div class="atmosphere"></div>
+<div id="viewport">
+  <div id="stage">
+    <div id="progress"></div>
+
+    <!-- ============ 1 封面 ============ -->
+    <section class="slide cover">
+      <div class="seal anim" style="--d:.1s"><b>2035</b><span>远景</span></div>
+      <div class="ribbon anim" style="--d:.15s">习近平新时代中国特色社会主义思想 · 课堂分享</div>
+      <h1 class="anim" style="--d:.28s">「十四五」发展变革回眸<br/>「十五五」远景蓝图展望</h1>
+      <h2 class="anim" style="--d:.42s">从六座城市，看两个五年规划</h2>
+      <div class="divider anim" style="--d:.55s"></div>
+      <div class="who anim" style="--d:.6s">
+        <span>汇报人 <b>宋如一</b></span><span>|</span><span><b>一班</b></span><span>|</span><span>学号 <b>21260109</b></span><span>|</span><span>辽宁 · 大连 · <b>庄河</b></span>
+      </div>
+      <div class="route anim" style="--d:.75s;position:absolute;bottom:54px;left:80px">
+        北纬 <span class="big">20°</span> → <span class="big">40°</span>　南海之滨 → 东北边境　跨越 <span class="big">3000+</span> 公里
+      </div>
+      <svg class="mountains anim" style="--d:.8s" viewBox="0 0 1280 150" preserveAspectRatio="none">
+        <path d="M0 150 L0 95 L150 40 L290 100 L440 30 L610 105 L770 45 L930 110 L1100 55 L1280 100 L1280 150 Z" fill="rgba(200,53,44,.25)"/>
+        <path d="M0 150 L0 120 L180 75 L360 125 L560 70 L760 128 L960 80 L1150 125 L1280 90 L1280 150 Z" fill="rgba(230,184,92,.12)"/>
+      </svg>
+    </section>
+
+    <!-- ============ 2 目录 ============ -->
+    <section class="slide">
+      <div class="toc-wrap">
+        <div class="toc-left">
+          <div class="big anim" style="--d:.1s">目录</div>
+          <div class="en anim" style="--d:.2s">CONTENTS</div>
+          <div class="rule anim" style="--d:.3s"></div>
+          <p class="anim" style="--d:.38s">一棒接着一棒跑<br/>从「十四五」的身边变化<br/>展望「十五五」的家乡未来</p>
+        </div>
+        <div class="toc-list">
+          <div class="toc-group anim" style="--d:.15s">导 · 言</div>
+          <div class="toc-item anim" style="--d:.22s"><span class="no">01</span><span class="nm">开篇</span><span class="desc">六个城市 · 三千里路</span></div>
+          <div class="toc-item anim" style="--d:.28s"><span class="no">02</span><span class="nm">什么是「十四五」和「十五五」</span><span class="desc">2035 远景目标</span></div>
+          <div class="toc-item anim" style="--d:.34s"><span class="no">03</span><span class="nm">「十四五」时代背景</span><span class="desc">风雨五年 · 20项指标</span></div>
+          <div class="toc-group anim" style="--d:.4s">六 站 之 旅 · 十四五身边的变化</div>
+          <div class="toc-item anim" style="--d:.46s"><span class="no">04</span><span class="nm">海口</span><span class="desc">海南全岛封关</span></div>
+          <div class="toc-item anim" style="--d:.52s"><span class="no">05</span><span class="nm">重庆</span><span class="desc">山地低空经济</span></div>
+          <div class="toc-item anim" style="--d:.58s"><span class="no">06</span><span class="nm">遵义</span><span class="desc">酱酒产业升级</span></div>
+          <div class="toc-item anim" style="--d:.64s"><span class="no">07</span><span class="nm">丹东</span><span class="desc">智慧温室草莓</span></div>
+          <div class="toc-item anim" style="--d:.7s"><span class="no">08</span><span class="nm">广州</span><span class="desc">轨道网络越织越密</span></div>
+          <div class="toc-item home anim" style="--d:.76s"><span class="no">09</span><span class="nm">庄河<span class="star">★</span></span><span class="desc">我的家乡 · 讲述重点</span></div>
+          <div class="toc-group anim" style="--d:.82s">收 · 束</div>
+          <div class="toc-item anim" style="--d:.88s"><span class="no">10</span><span class="nm">结语</span><span class="desc">接续奋斗 · 奋进 2035</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3 开篇 · 六城浮现 ============ -->
+    <section class="slide">
+      <div class="open-top">
+        <div class="lead anim" style="--d:.1s">我想从<em>我的视角</em>，带大家看看这<em>六座城市</em>——</div>
+        <div class="open-tags anim" style="--d:.35s">
+          <span>从北纬 <b>20°</b> 到北纬 <b>40°</b></span>
+          <span>从<b>南海之滨</b>到<b>东北边境</b></span>
+          <span>加起来<b>三千多公里</b></span>
+        </div>
+      </div>
+      <div class="lat-stage">
+        <div class="lat-line"></div>
+        <div class="stops">
+          <div class="stop" style="--d:.5s">
+            <div class="stop-card"><div class="glyph">🏖️</div><div class="cn">海口</div><div class="lat">北纬 20.0°</div></div>
+            <div class="dot"></div>
+          </div>
+          <div class="stop" style="--d:.85s">
+            <div class="stop-card"><div class="glyph">🚄</div><div class="cn">广州</div><div class="lat">北纬 23.1°</div></div>
+            <div class="dot"></div>
+          </div>
+          <div class="stop" style="--d:1.2s">
+            <div class="stop-card"><div class="glyph">🍶</div><div class="cn">遵义</div><div class="lat">北纬 27.7°</div></div>
+            <div class="dot"></div>
+          </div>
+          <div class="stop" style="--d:1.55s">
+            <div class="stop-card"><div class="glyph">🚁</div><div class="cn">重庆</div><div class="lat">北纬 29.6°</div></div>
+            <div class="dot"></div>
+          </div>
+          <div class="stop home" style="--d:1.9s">
+            <div class="stop-card"><div class="glyph">🌊</div><div class="cn">庄河</div><div class="lat">北纬 39.7°</div><div class="home-tag">★ 我的家乡</div></div>
+            <div class="dot"></div>
+          </div>
+          <div class="stop" style="--d:2.25s">
+            <div class="stop-card"><div class="glyph">🍓</div><div class="cn">丹东</div><div class="lat">北纬 40.1°</div></div>
+            <div class="dot"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4 什么是十四五十五五 ============ -->
+    <section class="slide">
+      <div class="kicker anim" style="--d:.05s">概念速览</div>
+      <h2 class="h-title anim" style="--d:.12s">「十四五」与「十五五」，到底是什么？</h2>
+      <div class="goal anim" style="--d:.22s">「十四五」和「十五五」，是我们朝着 <b>2035 年基本实现社会主义现代化</b> 这个远景目标，<b>接力奋斗</b>的两个五年规划。</div>
+      <div class="plan-grid">
+        <div class="plan p14 anim" style="--d:.3s">
+          <div class="yr">2021 — 2025</div>
+          <h3>十四五</h3>
+          <span class="tag">打基础 · 补短板</span>
+          <p>直面疫情冲击，核心任务就是<b>打基础、补短板</b>，为现代化新征程开好头、起好步。</p>
+        </div>
+        <div class="baton anim" style="--d:.45s">
+          <div class="baton-line"></div>
+          <div class="baton-icon">🏃</div>
+        </div>
+        <div class="plan p15 anim" style="--d:.4s">
+          <div class="yr">2026 — 2030</div>
+          <h3>十五五</h3>
+          <span class="tag">新质生产力 · 创新突破</span>
+          <p>站上新的起点，重点发展<b style="color:var(--gold)">新质生产力</b>，推动发展提质升级——<b style="color:var(--gold)">从筑牢底盘，转向创新突破</b>。</p>
+        </div>
+      </div>
+      <div class="plan-foot anim" style="--d:.55s">两个规划一脉相承 —— 一棒接着一棒跑，一步步向着 2035 不断前进</div>
+    </section>
+
+    <!-- ============ 5 背景与成绩 ============ -->
+    <section class="slide">
+      <div class="kicker anim" style="--d:.05s">「十四五」· 时代背景</div>
+      <h2 class="h-title anim" style="--d:.12s">风雨五年，交出一份亮眼答卷</h2>
+      <div class="s4-grid">
+        <div class="s4-card anim" style="--d:.2s">
+          <h3>挑战重重</h3>
+          <ul>
+            <li>内有压力<small>疫情持续冲击，经济社会发展承压</small></li>
+            <li>外有风浪<small>俄乌、巴以、伊以冲突接连爆发，全球局势动荡不安</small></li>
+          </ul>
+        </div>
+        <div class="s4-center anim" style="--d:.3s">
+          <div class="ring"><span class="n">20</span><span class="t">项主要指标<br/>全部圆满完成</span></div>
+          <div class="areas"><span>经济</span><span>科技</span><span>民生</span><span>生态</span></div>
+        </div>
+        <div class="s4-card anim" style="--d:.4s">
+          <h3>亮眼成果</h3>
+          <ul>
+            <li>迎难而上<small>稳住经济大盘</small></li>
+            <li>全面收获<small>经济、科技、民生、生态各方面成果亮眼</small></li>
+            <li>筑牢根基<small>为现代化建设打下坚实基础</small></li>
+          </ul>
+        </div>
+      </div>
+      <div class="s4-foot anim" style="--d:.55s">内有压力、外有风浪 —— 我们<b>迎难而上</b></div>
+    </section>
+
+    <!-- ============ 6 海口 ============ -->
+    <section class="slide city" style="--accent:#3fb6c6">
+      <div class="kicker anim" style="--d:.05s">第一站 · 海南 海口　|　北纬 20° · 南海之滨</div>
+      <div class="city-wrap">
+        <div class="city-id">
+          <div class="watermark anim" style="--d:.1s">01</div>
+          <div class="cname anim" style="--d:.18s">海口</div>
+          <div class="accentbar anim" style="--d:.28s"></div>
+        </div>
+        <div>
+          <div class="chips anim" style="--d:.22s"><span>海南自贸港</span><span>全岛封关</span><span>封关红利</span><span>门户城市</span></div>
+          <div class="city-main era-line anim" style="--d:.3s"><span class="era era14">十四五收官之年</span><em>海南全岛封关</em>——海口从风光秀丽的滨海省会，蜕变为<em>海南自贸港的核心枢纽</em>，扛起全岛封关运作的核心重任。</div>
+          <div class="city-main era-line city-main-15 anim" style="--d:.42s"><span class="era era15">展望十五五</span>海口将依托封关红利，对标国际高标准经贸规则，培育<em>新质生产力</em>，优化城市功能品质，厚植生态本底，全力建设<em>现代化国际化自贸港门户城市</em>。</div>
+          <div class="data-row anim" style="--d:.52s">
+            <div class="dcard"><div class="dnum">3万<span>多km²</span></div><div class="dlab">海南岛整体成为海关监管特殊区域</div><div class="ddelta">2025年12月18日正式启动封关</div></div>
+            <div class="dcard"><div class="dnum">8 + 10<span>个口岸</span></div><div class="dlab">8个「一线」对外开放口岸</div><div class="ddelta">10个「二线口岸」同步启用</div></div>
+            <div class="dcard"><div class="dnum">74%</div><div class="dlab">「零关税」商品税目覆盖率</div><div class="ddelta">1900项 → 6637项（21%→74%）</div></div>
+            <div class="dcard"><div class="dnum">↓27%</div><div class="dlab">进口货物平均通关时间</div><div class="ddelta">封关首月离岛免税48.6亿元 · +46.8%</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="city-glyph anim" style="--d:.6s">🏝️</div>
+      <div class="src">数据来源：<b>海关总署</b>《全岛正式封关 海南自贸港建设开启新篇章》；海南省新闻办封关进展新闻发布会（2026.1）；海口海关</div>
+    </section>
+
+    <!-- ============ 7 重庆 ============ -->
+    <section class="slide city" style="--accent:#ff6b4a">
+      <div class="kicker anim" style="--d:.05s">第二站 · 山城 重庆　|　北纬 29.6° · 立体山城</div>
+      <div class="city-wrap">
+        <div class="city-id">
+          <div class="watermark anim" style="--d:.1s">02</div>
+          <div class="cname anim" style="--d:.18s">重庆</div>
+          <div class="accentbar anim" style="--d:.28s"></div>
+        </div>
+        <div>
+          <div class="impress anim" style="--d:.22s"><span class="im-lab">🔥 重庆·大众印象</span><span class="it">魔幻 8D 立体城市<small>（导航看了都流泪）</small></span><span class="it">🍲 火锅之都</span><span class="it">🌃 赛博朋克</span></div>
+          <div class="chips anim" style="--d:.3s"><span>低空经济</span><span>新质生产力</span><span>无人机应用</span></div>
+          <div class="city-main anim" style="--d:.3s">依托<em>山地优势</em>开辟全新赛道，大力发展低空经济——无人机走进<em>巡检、应急配送</em>等场景，科技飞入山城百姓家。</div>
+          <div class="data-row anim" style="--d:.4s">
+            <div class="dcard"><div class="dnum">102<span>亿元</span></div><div class="dlab">2025年低空制造业产值</div><div class="ddelta">首次突破百亿 · 同比 +20.4%</div></div>
+            <div class="dcard"><div class="dnum">106<span>家</span></div><div class="dlab">全市低空制造类企业</div><div class="ddelta">产值超亿元15家 · 国家「小巨人」7家</div></div>
+            <div class="dcard"><div class="dnum">93<span>款</span></div><div class="dlab">5大类低空产品入选产业链名录</div><div class="ddelta">14个区县开展市级试点</div></div>
+            <div class="dcard"><div class="dnum">+143%</div><div class="dlab">无人机飞行架次同比增长</div><div class="ddelta">飞行时长同比 +111.4%</div></div>
+          </div>
+          <div class="city-points anim" style="--d:.52s">
+            <div><b>局</b>形成两江新区、巴南、江津、梁平、永川「5+9」产业发展格局</div>
+            <div><b>用</b>80克「双擎」微型无人机可钻进30厘米管道，解决狭小空间工业巡检难题</div>
+          </div>
+        </div>
+      </div>
+      <div class="city-glyph anim" style="--d:.6s">🚁</div>
+      <div class="src">数据来源：<b>重庆市经济信息委</b>低空经济重大成果发布（2026.2）；重庆市人民政府网；重庆市政府《2025年度改革发展最佳实践案例》</div>
+    </section>
+
+    <!-- ============ 8 遵义 ============ -->
+    <section class="slide city" style="--accent:#c0647e">
+      <div class="kicker anim" style="--d:.05s">第三站 · 贵州 遵义　|　北纬 27.7° · 酱酒之乡</div>
+      <div class="city-wrap">
+        <div class="city-id">
+          <div class="watermark anim" style="--d:.1s">03</div>
+          <div class="cname anim" style="--d:.18s">遵义</div>
+          <div class="accentbar anim" style="--d:.28s"></div>
+        </div>
+        <div>
+          <div class="chips anim" style="--d:.22s"><span>茅台数字化升级</span><span>高粱种植基地</span><span>酒旅文创 · 循环利用</span></div>
+          <div class="city-main anim" style="--d:.3s">十四五期间，<em>茅台生产数字化升级</em>，建设高粱种植基地、拓展酒旅文创、完善酒糟循环利用，带动遵义<em>酱酒产业链不断扩大</em>。</div>
+          <div class="data-row anim" style="--d:.4s">
+            <div class="dcard"><div class="dnum">1408<span>亿元</span></div><div class="dlab">2024年全市白酒产业产值</div><div class="ddelta">形成千亿级酱香型白酒产业集群</div></div>
+            <div class="dcard"><div class="dnum">1720.5<span>亿元</span></div><div class="dlab">贵州茅台2025年营业总收入</div><div class="ddelta">茅台酒1465亿 · 系列酒222.75亿</div></div>
+            <div class="dcard"><div class="dnum">100%</div><div class="dlab">酿酒副产物资源化利用率</div><div class="ddelta">酒糟→有机肥、饲料、天然气</div></div>
+            <div class="dcard"><div class="dnum">5000<span>亿</span></div><div class="dlab">GDP连跨4000亿、5000亿大关</div><div class="ddelta">「十四五」年均增长 6.2%</div></div>
+          </div>
+          <div class="city-points anim" style="--d:.52s">
+            <div><b>数</b>「i茅台」数字营销平台、包材赋码改造，AI 智能体走进酿酒关键场景</div>
+            <div><b>绿</b>循环经济产业园实现「从土里来，到土里去」的产业闭环</div>
+          </div>
+        </div>
+      </div>
+      <div class="city-glyph anim" style="--d:.6s">🍶</div>
+      <div class="src">数据来源：<b>遵义市人民政府</b>2025、2026年《政府工作报告》；《贵州茅台2025年年度报告》；茅台集团官网</div>
+    </section>
+
+    <!-- ============ 9 丹东 ============ -->
+    <section class="slide city" style="--accent:#ef6a8a">
+      <div class="kicker anim" style="--d:.05s">第四站 · 辽宁 丹东　|　北纬 40.1° · 鸭绿江畔</div>
+      <div class="city-wrap">
+        <div class="city-id">
+          <div class="watermark anim" style="--d:.1s">04</div>
+          <div class="cname anim" style="--d:.18s">丹东</div>
+          <div class="accentbar anim" style="--d:.28s"></div>
+        </div>
+        <div>
+          <div class="chips anim" style="--d:.22s"><span>东港草莓</span><span>智慧温室</span><span>凭经验 → 智能化</span></div>
+          <div class="city-main anim" style="--d:.3s">很多草莓大棚升级成<em>智慧温室</em>，装上温控、水肥设备——手机上就能远程调控棚内环境，草莓种植从<em>凭经验变成智能化管理</em>。</div>
+          <div class="data-row anim" style="--d:.4s">
+            <div class="dcard"><div class="dnum">20.56<span>万亩</span></div><div class="dlab">东港草莓种植面积</div><div class="ddelta">总产量 32.2 万吨</div></div>
+            <div class="dcard"><div class="dnum">64.4<span>亿元</span></div><div class="dlab">鲜果年产值</div><div class="ddelta">带动约 10 万农户增收</div></div>
+            <div class="dcard"><div class="dnum">↑18<span>倍</span></div><div class="dlab">鲜草莓出口量（十四五）</div><div class="ddelta">17吨(2020) → 329吨(2024)，销往10余个国家和地区</div></div>
+            <div class="dcard"><div class="dnum">418.6<span>亿元</span></div><div class="dlab">2025年东港草莓品牌价值</div><div class="ddelta">电商销售占比超 60%</div></div>
+          </div>
+          <div class="city-points anim" style="--d:.52s">
+            <div><b>智</b>通风口随温度自动开合，水肥一体化按生长期定量配比、精准滴灌</div>
+            <div><b>新</b>冷冻苗技术把产季提前到10月；「采摘即申报、包装即查验、放行即出证」</div>
+          </div>
+        </div>
+      </div>
+      <div class="city-glyph anim" style="--d:.6s">🍓</div>
+      <div class="src">数据来源：<b>海关总署</b>「身边的十四五」（大连海关）；辽宁省人民政府网转人民日报、新华社、经济日报（2025—2026）</div>
+    </section>
+
+    <!-- ============ 10 广州 ============ -->
+    <section class="slide city" style="--accent:#f2903c">
+      <div class="kicker anim" style="--d:.05s">第五站 · 广东 广州　|　北纬 23.1° · 千年商都</div>
+      <div class="city-wrap">
+        <div class="city-id">
+          <div class="watermark anim" style="--d:.1s">05</div>
+          <div class="cname anim" style="--d:.18s">广州</div>
+          <div class="accentbar anim" style="--d:.28s"></div>
+        </div>
+        <div>
+          <div class="gz-timeline">
+            <div class="gz-card gz-good anim" style="--d:.22s">
+              <div class="gz-tag">🙋 个人体验 · 「十四五」成就</div>
+              <p>家就在 <b>3 号线</b>上——三号线由原终点番禺广场<b>延展四站到海傍</b>，换乘 4 号线更方便。</p>
+            </div>
+            <div class="gz-card gz-bad anim" style="--d:.38s">
+              <div class="gz-tag">😮‍💨 现实不足</div>
+              <p>高峰时段，广州 3 号线长期满载拥挤，是<b>广州客流压力最大的地铁线路</b>。放学赶上晚高峰，<b>排队一小时</b>才能从地铁站闸门处下到地铁门口，继续排队挤地铁。</p>
+            </div>
+            <div class="gz-card gz-plan anim" style="--d:.54s">
+              <div class="gz-tag">🎯 官方目标 · 「十五五」（与个人期望相符）</div>
+              <p>广州「十五五」（2026—2030）规划提出：推进地铁 <b>3 号线支线拆解改造</b>，分流<b>体育西路站</b>巨大客流，持续改善这条线路的拥挤情况。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="city-glyph anim" style="--d:.6s">🚇</div>
+    </section>
+
+    <!-- ============ 11 庄河名片 ============ -->
+    <section class="slide city" style="--accent:#5aa66e">
+      <div class="kicker anim" style="--d:.05s">最后一站 · 我的家乡 ★</div>
+      <div class="zh-hero">
+        <div class="zh-left">
+          <div class="bigline anim" style="--d:.15s"><small>辽宁 · 大连 · 黄海北岸</small>庄 河</div>
+          <div class="loc anim" style="--d:.3s;margin-top:26px;font-size:23px;line-height:1.9">庄河，坐落于<b>黄海北岸</b>，<br/>是一座<b>山海相依</b>的小城。</div>
+          <div class="loc anim" style="--d:.44s;margin-top:22px;font-size:21px;line-height:1.9">这里盛产<b>蓝莓、苹果</b>等水果，<br/>我经常吃<b>长辈做的水果罐头</b>。</div>
+          <div class="loc anim" style="--d:.56s;margin-top:26px;font-size:18px;color:rgba(205,187,159,.75)">—— 我的前十八岁，就是在这座小城里长大的。</div>
+        </div>
+        <div class="zh-photo anim" style="--d:.35s">
+          <img src="img/zhuanghe-sunset.jpg" alt="庄河晚霞">
+          <div class="photo-cap">📷 在我家窗户拍的晚霞</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 12 庄河四板块 ============ -->
+    <section class="slide">
+      <div class="kicker anim" style="--d:.05s">我眼中的庄河 · 从「十四五」到「十五五」</div>
+      <h2 class="h-title anim" style="--d:.12s">我的视角下，家乡的变化与期望</h2>
+      <div class="quad">
+        <div class="qcard anim" style="--d:.2s;--qc:#5aa66e">
+          <div class="ico">🏞️</div>
+          <div><h4>生态环境</h4>
+            <p><b>被污染的水</b>，被保护起来——<b>变清澈了</b>。</p></div>
+        </div>
+        <div class="qcard anim" style="--d:.3s;--qc:#e6b85c">
+          <div class="ico">📚</div>
+          <div><h4>教育方式</h4>
+            <div class="fiveword">德智体美劳全面发展</div></div>
+        </div>
+        <div class="qcard anim" style="--d:.4s;--qc:#ef6a8a">
+          <div class="ico">🍒</div>
+          <div><h4>生活方面</h4>
+            <p><b>水果种类，越来越多。</b></p></div>
+        </div>
+        <div class="qcard anim" style="--d:.5s;--qc:#6fb7e8">
+          <div class="ico">🔭</div>
+          <div><h4>未来展望<small>写给「十五五」</small></h4>
+            <div class="wishline">大愿望：祝家乡<b>核电站建成顺利</b>，家乡<b>越来越富饶</b>！</div>
+            <div class="wishline">小心愿：以我的视角看，也期望<b>非机动车道</b>能多一些，再多一些。🚲</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 13 结语（末页） ============ -->
+    <section class="slide quote-slide">
+      <div class="q-source anim" style="--d:.1s">党的二十届四中全会第二次全体会议 · 习近平总书记指出</div>
+      <div class="q-mark anim" style="--d:.22s">“</div>
+      <div class="q-text anim" style="--d:.3s">实现社会主义现代化是一个<em>阶梯式递进、不断发展进步</em>的历史过程，需要<em>不懈努力、接续奋斗</em>。</div>
+      <div class="q-rule anim" style="--d:.42s"></div>
+      <div class="q-sig anim" style="--d:.48s">—— <b>习近平</b></div>
+      <div class="end-thanks anim" style="--d:.6s">谢 谢 大 家　·　宋如一 · 一班 · 21260109</div>
+    </section>
+
+    <div id="pageno">01 / 13</div>
+    <div id="brand">十四五回眸 · 十五五展望</div>
+    <div id="hint">← → 方向键 / 空格 翻页</div>
+    <div class="nav" id="navPrev"><button id="btnPrev" aria-label="上一页">‹</button></div>
+    <div class="nav" id="navNext"><button id="btnNext" aria-label="下一页">›</button></div>
+  </div>
+</div>
+
+<!-- ============ 桌宠 ============ -->
+<div id="pet" title="点我重播本页语音">
+  <div class="pet-bubble" id="petBubble"></div>
+  <div class="pet-body">
+    <button class="pet-mute" id="petMute" title="开 / 关声音">🔊</button>
+    <div class="pet-ear l"></div><div class="pet-ear r"></div>
+    <div class="pet-antenna"></div>
+    <div class="pet-eye l"></div><div class="pet-eye r"></div>
+    <div class="pet-mouth"><i></i><i></i><i></i></div>
+  </div>
+  <div class="pet-shadow"></div>
+</div>
+
+<script>
+(function(){
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(document.querySelectorAll('.slide'));
+  var progress = document.getElementById('progress');
+  var pageno = document.getElementById('pageno');
+  var btnPrev = document.getElementById('btnPrev');
+  var btnNext = document.getElementById('btnNext');
+  var hint = document.getElementById('hint');
+  var cur = 0, total = slides.length;
+
+  function fit(){
+    var s = Math.min(window.innerWidth/1280, window.innerHeight/720);
+    stage.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit); fit();
+
+  function go(n, dir){
+    n = Math.max(0, Math.min(total-1, n));
+    slides.forEach(function(s){ s.classList.remove('active','rev'); });
+    if(dir === 'prev') slides[n].classList.add('rev');
+    void slides[n].offsetWidth; // 重置动画
+    slides[n].classList.add('active');
+    cur = n;
+    progress.style.width = ((cur+1)/total*100) + '%';
+    pageno.textContent = String(cur+1).padStart(2,'0') + ' / ' + total;
+    btnPrev.disabled = cur === 0;
+    btnNext.disabled = cur === total-1;
+    petSay(cur);
+  }
+  function next(){ if(cur < total-1) go(cur+1, 'next'); }
+  function prev(){ if(cur > 0) go(cur-1, 'prev'); }
+
+  document.addEventListener('keydown', function(e){
+    if(['ArrowRight','ArrowDown',' ','PageDown'].indexOf(e.key) > -1){ e.preventDefault(); next(); }
+    else if(['ArrowLeft','ArrowUp','PageUp'].indexOf(e.key) > -1){ e.preventDefault(); prev(); }
+    else if(e.key === 'Home'){ go(0,'prev'); }
+    else if(e.key === 'End'){ go(total-1,'next'); }
+  });
+  btnNext.addEventListener('click', next);
+  btnPrev.addEventListener('click', prev);
+
+  var tx=0, ty=0;
+  document.addEventListener('touchstart', function(e){ tx=e.touches[0].clientX; ty=e.touches[0].clientY; }, {passive:true});
+  document.addEventListener('touchend', function(e){
+    var dx=e.changedTouches[0].clientX - tx, dy=e.changedTouches[0].clientY - ty;
+    if(Math.abs(dx) > 55 && Math.abs(dx) > Math.abs(dy)){ dx < 0 ? next() : prev(); }
+  }, {passive:true});
+
+  stage.addEventListener('click', function(e){
+    if(e.target.closest('button')) return;
+    var r = stage.getBoundingClientRect();
+    var x = (e.clientX - r.left) / r.width;
+    if(x > 0.82) next(); else if(x < 0.12) prev();
+  });
+
+  /* ============ 桌宠配音 ============ */
+  // 按页（0基）配置台词：第1页封面、第2页目录、第6~11页城市名，其余页不发声
+  var PET_LINES = {};
+  PET_LINES[0] = '「十四五」发展变革回眸，「十五五」远景蓝图展望';
+  PET_LINES[1] = '目录';
+  ['海口','重庆','遵义','丹东','广州','庄河'].forEach(function(c,i){ PET_LINES[5+i] = c; });
+
+  var pet = document.getElementById('pet');
+  var petBubble = document.getElementById('petBubble');
+  var petMute = document.getElementById('petMute');
+  var muted = false, unlocked = false, spokenThisPage = false, bubbleTimer = null, petGen = 0;
+  var zhVoice = null;
+  var TTS = ('speechSynthesis' in window) ? window.speechSynthesis : null;
+
+  function pickVoice(){
+    if(!TTS) return;
+    var vs = TTS.getVoices();
+    if(!vs.length) return;
+    var prefer = ['Xiaoxiao','Xiaoyi','Xiaomo','Ting-Ting','Meijia','Google 普通话','Huihui','Kangkang','Sinji','zh'];
+    for(var k=0;k<prefer.length;k++){
+      for(var i=0;i<vs.length;i++){
+        if(vs[i].lang && vs[i].lang.toLowerCase().indexOf('zh')===0 && vs[i].name.indexOf(prefer[k])>-1){ zhVoice = vs[i]; return; }
+      }
+    }
+    for(var j=0;j<vs.length;j++){ if(vs[j].lang && vs[j].lang.toLowerCase().indexOf('zh')===0){ zhVoice = vs[j]; return; } }
+  }
+  if(TTS){
+    pickVoice();
+    TTS.onvoiceschanged = pickVoice;
+  }
+
+  function hideBubble(){ petBubble.classList.remove('show'); pet.classList.remove('speaking'); petBubble.textContent=''; }
+  function showBubble(txt){
+    petBubble.textContent = txt;
+    petBubble.classList.add('show');
+    clearTimeout(bubbleTimer);
+  }
+
+  function petSay(i, isRetry){
+    var g = ++petGen; // 代际令牌：快速翻页时让旧语音的回调失效
+    clearTimeout(bubbleTimer);
+    if(TTS) TTS.cancel();
+    pet.classList.remove('speaking');
+    var line = PET_LINES[i];
+    if(!line){ hideBubble(); return; }
+    spokenThisPage = false;
+    if(muted) return;
+    showBubble(line);
+    // 首次进入页面、浏览器尚未解锁音频时，等第一次交互自动补播
+    if(!unlocked && !isRetry){
+      bubbleTimer = setTimeout(function(){ if(g===petGen && !spokenThisPage) hideBubble(); }, Math.min(line.length*260+1200, 6000));
+      return;
+    }
+    if(!TTS){
+      bubbleTimer = setTimeout(function(){ if(g===petGen) hideBubble(); }, Math.min(line.length*300+1200, 6000));
+      return;
+    }
+    var u = new SpeechSynthesisUtterance(line);
+    u.lang = 'zh-CN'; u.rate = 1.0; u.pitch = 1.08; u.volume = 1;
+    if(zhVoice) u.voice = zhVoice;
+    u.onstart = function(){ if(g!==petGen) return; spokenThisPage = true; pet.classList.add('speaking'); };
+    u.onend = function(){ if(g!==petGen) return; pet.classList.remove('speaking'); bubbleTimer = setTimeout(hideBubble, 700); };
+    u.onerror = function(){ if(g!==petGen) return; pet.classList.remove('speaking'); bubbleTimer = setTimeout(hideBubble, 500); };
+    TTS.speak(u);
+    // 兜底：若环境无可用中文语音（onerror/无onstart），按字数估算后收起气泡
+    bubbleTimer = setTimeout(function(){
+      if(g!==petGen) return;
+      if(!spokenThisPage){ hideBubble(); }
+      else { pet.classList.remove('speaking'); }
+    }, Math.min(line.length*260+3000, 9000));
+  }
+
+  function unlock(){
+    if(unlocked) return;
+    unlocked = true;
+    if(!spokenThisPage && PET_LINES[cur] && !muted) petSay(cur, true);
+  }
+  document.addEventListener('pointerdown', unlock);
+  document.addEventListener('keydown', unlock);
+
+  pet.addEventListener('click', function(){
+    if(PET_LINES[cur]){ unlocked = true; petSay(cur, true); }
+  });
+  petMute.addEventListener('click', function(e){
+    e.stopPropagation();
+    muted = !muted;
+    petMute.textContent = muted ? '🔇' : '🔊';
+    if(muted){ if(TTS) TTS.cancel(); hideBubble(); }
+    else { unlocked = true; petSay(cur, true); }
+  });
+  // 切到后台标签时停止播报
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && TTS){ TTS.cancel(); pet.classList.remove('speaking'); }
+  });
+
+  setTimeout(function(){ hint.style.opacity = '0'; }, 6000);
+  go(0);
+})();
+</script>
+</body>
+</html>
