@@ -318,7 +318,8 @@
   .q-text em{font-style:normal;color:var(--gold)}
   .q-sig{font-size:22px;letter-spacing:4px;color:var(--ink-dim)}
   .q-sig b{color:var(--gold-soft);font-weight:600}
-  .end-thanks{margin-top:38px;font-size:19px;letter-spacing:5px;color:var(--gold-soft)}
+  .end-thanks{margin-top:28px;font-size:19px;letter-spacing:5px;color:var(--gold-soft)}
+  .end-team{margin-top:10px;font-size:14.5px;letter-spacing:3px;color:rgba(205,187,159,.66)}
   .q-rule{width:120px;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin-bottom:26px}
 
   /* ============ 谢谢 ============ */
@@ -331,6 +332,39 @@
   .end-slide .t2{font-size:23px;letter-spacing:6px;color:var(--ink-dim);margin-top:16px}
   .end-slide .t3{margin-top:30px;font-size:20px;letter-spacing:4px;color:var(--gold-soft)}
   .end-slide .stars{font-size:22px;letter-spacing:18px;margin-bottom:8px}
+
+  /* 海口：封关政策小字 */
+  .policy-note{margin-top:15px;text-align:center;font-size:16px;letter-spacing:4px;color:var(--gold-soft)}
+  .policy-note b{color:var(--gold);font-weight:700;letter-spacing:2px}
+  .policy-note .sep{color:rgba(230,184,92,.45);margin:0 12px}
+
+  /* 重庆低空经济案例页 */
+  .cases{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:60px}
+  .case-card{position:relative;border-radius:20px;padding:46px 44px;
+    background:linear-gradient(160deg,rgba(255,107,74,.13),var(--card) 55%);
+    border:1px solid rgba(255,107,74,.4);overflow:hidden;display:flex;flex-direction:column;justify-content:center;min-height:230px}
+  .case-card::after{content:"🛸";position:absolute;right:-14px;bottom:-26px;font-size:150px;opacity:.07;line-height:1}
+  .case-txt{font-size:22px;line-height:2;letter-spacing:1px;color:var(--ink);text-align:justify}
+  .case-txt b{color:#fff}
+  .case-txt em{font-family:var(--serif);font-style:normal;color:#ffd07a;font-weight:700}
+
+  /* 庄河十四五主要变化 */
+  .zh14-grid{margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+  .zh14-card{position:relative;border-radius:14px;padding:16px 20px 15px;
+    background:var(--card);border:1px solid rgba(230,184,92,.22);overflow:hidden}
+  .zh14-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--zc,var(--gold))}
+  .zh14-head{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+  .zh14-num{font-family:var(--serif);font-size:23px;color:var(--zc,var(--gold));font-weight:700;line-height:1}
+  .zh14-card h5{font-family:var(--serif);font-size:20px;letter-spacing:2px;color:#fff}
+  .zh14-card h5 small{font-family:var(--sans);font-size:13px;color:var(--zc,var(--gold));margin-left:7px;letter-spacing:1px}
+  .zh14-card p{font-size:15px;line-height:1.62;color:var(--ink-dim)}
+  .zh14-card p b{color:var(--ink);font-weight:600}
+  .zh14-card.gdp{background:linear-gradient(160deg,rgba(230,184,92,.18),var(--card) 60%);border-color:rgba(230,184,92,.5)}
+  .gdp-row{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+  .gdp-row .from{font-size:17px;color:var(--ink-dim);text-decoration:line-through;text-decoration-color:rgba(205,187,159,.5)}
+  .gdp-row .arrow{color:var(--gold);font-size:18px}
+  .gdp-row .to{font-family:var(--serif);font-size:33px;font-weight:900;color:var(--gold);line-height:1}
+  .gdp-row .rate{font-size:14px;color:#9fd8b0;border:1px solid rgba(159,216,176,.5);padding:2px 9px;border-radius:999px;margin-left:2px}
 
   /* ============ 桌宠 ============ */
   #pet{position:fixed;left:18px;bottom:46px;z-index:90;width:84px;cursor:pointer;user-select:none}
@@ -555,6 +589,7 @@
             <div class="dcard"><div class="dnum">74%</div><div class="dlab">「零关税」商品税目覆盖率</div><div class="ddelta">1900项 → 6637项（21%→74%）</div></div>
             <div class="dcard"><div class="dnum">↓27%</div><div class="dlab">进口货物平均通关时间</div><div class="ddelta">封关首月离岛免税48.6亿元 · +46.8%</div></div>
           </div>
+          <div class="policy-note anim" style="--d:.6s">封关运作核心制度安排：<b>「一线」放开</b><span class="sep">·</span><b>「二线」管住</b><span class="sep">·</span><b>岛内自由</b></div>
         </div>
       </div>
       <div class="city-glyph anim" style="--d:.6s">🏝️</div>
@@ -590,7 +625,21 @@
       <div class="src">数据来源：<b>重庆市经济信息委</b>低空经济重大成果发布（2026.2）；重庆市人民政府网；重庆市政府《2025年度改革发展最佳实践案例》</div>
     </section>
 
-    <!-- ============ 8 遵义 ============ -->
+    <!-- ============ 8 重庆低空经济案例（新） ============ -->
+    <section class="slide" style="--accent:#ff6b4a">
+      <div class="kicker anim" style="--d:.05s">第二站续 · 山城 重庆　|　低空经济，飞在身边</div>
+      <h2 class="h-title anim" style="--d:.12s">重庆低空经济 · <span style="color:#ff8a66">山城救援案例</span></h2>
+      <div class="cases">
+        <div class="case-card anim" style="--d:.24s">
+          <div class="case-txt">2025年重庆江津利用无人机开展长江沿岸防溺水巡查，成功劝阻百余人次危险戏水</div>
+        </div>
+        <div class="case-card anim" style="--d:.4s">
+          <div class="case-txt">2026年4月，重庆永川警方利用红外热成像无人机，3分钟定位深山走失老人，完成救援。</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 9 遵义 ============ -->
     <section class="slide city" style="--accent:#c0647e">
       <div class="kicker anim" style="--d:.05s">第三站 · 贵州 遵义　|　北纬 27.7° · 酱酒之乡</div>
       <div class="city-wrap">
@@ -634,7 +683,7 @@
             <div class="dcard"><div class="dnum">20.56<span>万亩</span></div><div class="dlab">东港草莓种植面积</div><div class="ddelta">总产量 32.2 万吨</div></div>
             <div class="dcard"><div class="dnum">64.4<span>亿元</span></div><div class="dlab">鲜果年产值</div><div class="ddelta">带动约 10 万农户增收</div></div>
             <div class="dcard"><div class="dnum">↑18<span>倍</span></div><div class="dlab">鲜草莓出口量（十四五）</div><div class="ddelta">17吨(2020) → 329吨(2024)，销往10余个国家和地区</div></div>
-            <div class="dcard"><div class="dnum">418.6<span>亿元</span></div><div class="dlab">2025年东港草莓品牌价值</div><div class="ddelta">电商销售占比超 60%</div></div>
+            <div class="dcard"><div class="dnum">418.55<span>亿元</span></div><div class="dlab">2025年东港草莓品牌价值</div><div class="ddelta">全产业链产值超150亿元 · 电商占比超60%</div></div>
           </div>
           <div class="city-points anim" style="--d:.52s">
             <div><b>智</b>通风口随温度自动开合，水肥一体化按生长期定量配比、精准滴灌</div>
@@ -643,7 +692,7 @@
         </div>
       </div>
       <div class="city-glyph anim" style="--d:.6s">🍓</div>
-      <div class="src">数据来源：<b>海关总署</b>「身边的十四五」（大连海关）；辽宁省人民政府网转人民日报、新华社、经济日报（2025—2026）</div>
+      <div class="src">数据来源：<b>经济日报</b>《辽宁草莓销售旺》（辽宁省人民政府网，2025.1.9：面积20.56万亩、总产32.2万吨、鲜果产值64.4亿元、带动约10万农户）；<b>海关总署</b>《“身边的十四五”——乡村振兴绘就“莓”好蓝图》（2025.10.24：鲜草莓出口17吨→329吨增18倍、品牌价值418.55亿元）；辽宁日报（2025.11：全产业链产值超150亿元）</div>
     </section>
 
     <!-- ============ 10 广州 ============ -->
@@ -658,7 +707,7 @@
         <div>
           <div class="gz-timeline">
             <div class="gz-card gz-good anim" style="--d:.22s">
-              <div class="gz-tag">🙋 个人体验 · 「十四五」成就</div>
+              <div class="gz-tag">🙋 广州人 <b style="color:#8fd69a">康莉雯</b> 的个人体验 · 「十四五」成就</div>
               <p>家就在 <b>3 号线</b>上——三号线由原终点番禺广场<b>延展四站到海傍</b>，换乘 4 号线更方便。</p>
             </div>
             <div class="gz-card gz-bad anim" style="--d:.38s">
@@ -692,7 +741,40 @@
       </div>
     </section>
 
-    <!-- ============ 12 庄河四板块 ============ -->
+    <!-- ============ 13 庄河十四五主要变化（新） ============ -->
+    <section class="slide">
+      <div class="kicker anim" style="--d:.05s">家乡庄河 ★ · 「十四五」发展答卷</div>
+      <h2 class="h-title anim" style="--d:.12s">庄河「十四五」主要变化</h2>
+      <div class="zh14-grid">
+        <div class="zh14-card gdp anim" style="--d:.2s;--zc:#e6b85c">
+          <div class="zh14-head"><span class="zh14-num">01</span><h5>经济总量</h5></div>
+          <div class="gdp-row"><span class="from">460亿</span><span class="arrow">→</span><span class="to">734亿元</span><span class="rate">年均 +5.9%</span></div>
+          <p><b>六大百亿级产业集群</b>成型，<b>清洁能源成为第一支柱产业</b>。</p>
+        </div>
+        <div class="zh14-card anim" style="--d:.28s;--zc:#6fb7e8">
+          <div class="zh14-head"><span class="zh14-num">02</span><h5>能源产业<small>最大亮点</small></h5></div>
+          <p>打造<b>「风光火核储」一体化国家级清洁能源基地</b>；海上风电、抽水蓄能、核电项目集中落地、大规模投资投产。</p>
+        </div>
+        <div class="zh14-card anim" style="--d:.36s;--zc:#5aa66e">
+          <div class="zh14-head"><span class="zh14-num">03</span><h5>产业平台</h5></div>
+          <p><b>大连北黄海经济开发区</b>提质升级；<b>海洋牧场、农产品精深加工、文旅康养</b>同步发展。</p>
+        </div>
+        <div class="zh14-card anim" style="--d:.44s;--zc:#c98bdb">
+          <div class="zh14-head"><span class="zh14-num">04</span><h5>城市建设</h5></div>
+          <p>全国<b>海绵城市</b>试点，海绵化改造达标面积持续扩大；市政、交通与<b>5G 新基建</b>加快推进。</p>
+        </div>
+        <div class="zh14-card anim" style="--d:.52s;--zc:#7fc98a">
+          <div class="zh14-head"><span class="zh14-num">05</span><h5>生态环境</h5></div>
+          <p>森林覆盖率稳定，<b>地表水、空气质量持续优良</b>，绿色低碳转型扎实推进。</p>
+        </div>
+        <div class="zh14-card anim" style="--d:.6s;--zc:#ef8f6a">
+          <div class="zh14-head"><span class="zh14-num">06</span><h5>民生领域</h5></div>
+          <p>教育、医疗、养老与城乡居民收入稳步提升，<b>基本公共服务均等化</b>持续推进。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 14 庄河四板块 ============ -->
     <section class="slide">
       <div class="kicker anim" style="--d:.05s">我眼中的庄河 · 从「十四五」到「十五五」</div>
       <h2 class="h-title anim" style="--d:.12s">我的视角下，家乡的变化与期望</h2>
@@ -710,7 +792,7 @@
         <div class="qcard anim" style="--d:.4s;--qc:#ef6a8a">
           <div class="ico">🍒</div>
           <div><h4>生活方面</h4>
-            <p><b>水果种类，越来越多。</b></p></div>
+            <p><b>水果种类越来越多，幸福指数升高；</b>但也真切感受到，受<b>疫情影响</b>，家附近的<b>店铺减少</b>了，<b>公共交通</b>也<b>减少</b>了。</p></div>
         </div>
         <div class="qcard anim" style="--d:.5s;--qc:#6fb7e8">
           <div class="ico">🔭</div>
@@ -729,9 +811,10 @@
       <div class="q-rule anim" style="--d:.42s"></div>
       <div class="q-sig anim" style="--d:.48s">—— <b>习近平</b></div>
       <div class="end-thanks anim" style="--d:.6s">谢 谢 大 家　·　宋如一 · 一班 · 21260109</div>
+      <div class="end-team anim" style="--d:.72s">组员：康莉雯　王捷　郭沛金欢　陈诺　迟梦琪</div>
     </section>
 
-    <div id="pageno">01 / 13</div>
+    <div id="pageno">01 / 15</div>
     <div id="brand">十四五回眸 · 十五五展望</div>
     <div id="hint">← → 方向键 / 空格 翻页</div>
     <div class="nav" id="navPrev"><button id="btnPrev" aria-label="上一页">‹</button></div>
@@ -809,11 +892,18 @@
   });
 
   /* ============ 桌宠配音 ============ */
-  // 按页（0基）配置台词：第1页封面、第2页目录、第6~11页城市名，其余页不发声
+  // 按页（0基）配置台词：第1页封面、第2页目录、六个城市页说城市名；案例页、庄河十四五页等其余页不发声
   var PET_LINES = {};
   PET_LINES[0] = '「十四五」发展变革回眸，「十五五」远景蓝图展望';
   PET_LINES[1] = '目录';
-  ['海口','重庆','遵义','丹东','广州','庄河'].forEach(function(c,i){ PET_LINES[5+i] = c; });
+  PET_LINES[5] = '海口';
+  PET_LINES[6] = '重庆';
+  // 第8页（index7）重庆案例页：沉默
+  PET_LINES[8] = '遵义';
+  PET_LINES[9] = '丹东';
+  PET_LINES[10] = '广州';
+  PET_LINES[11] = '庄河';
+  // 第13页（index12）庄河十四五页：沉默
 
   var pet = document.getElementById('pet');
   var petBubble = document.getElementById('petBubble');
